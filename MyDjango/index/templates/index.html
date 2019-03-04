@@ -1,0 +1,28 @@
+{% load myfilter %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% load staticfiles %}
+{#    <link rel="stylesheet" type="text/css" href="{% static 'css/hw_index.css' %}">#}
+{#    <link rel="icon" href="{% static 'img/hw.ico' %}">#}
+{#    <script src="{% static 'js/hw_index.js' %}"></script>#}
+    <title>{{ title|myreplace:'首页:我的首页' }}</title>
+</head>
+<body>
+<ul id="cate_box" class="lf">
+    {% for type in type_list %}
+    <li>
+        <h3><a href="#">{{ type.type }}</a></h3>
+        <p>
+            {% for name in name_list %}
+                {% if name.type == type.type %}
+                    <span>{{ name.name }}</span>
+                {% endif %}
+            {% endfor %}
+        </p>
+    </li>
+    {% endfor %}
+</ul>
+</body>
+</html>
